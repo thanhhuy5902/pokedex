@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+
+    .cardPokeMon{
+        width:  200px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+}

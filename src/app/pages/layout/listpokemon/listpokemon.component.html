@@ -1,0 +1,45 @@
+<p>listpokemon works!</p>
+<div class="container">
+    @if(loading$|async){
+    <p>Loading...</p>
+    }@else {
+    @for (item of pokemon$ |async ; track item.name) {
+    <div class="cardPokeMon">
+        <h1>{{item.name}}</h1>
+        <!-- <img [src]="item.pokeDetail.back_default" alt="pokemon"> -->
+        <p>{{item.height}}</p>
+        <p>{{item.weight}}</p>
+        <!-- <img src="{{item.sprites.back_default}}" /> -->
+        <img src="{{item.sprites.other.dream_world.front_default}}" />
+        <!-- <img src="{{item.sprites.back_shiny}}" /> -->
+        <button (click)="openDialog(item)">Detail</button>
+
+    </div>
+    }
+    }
+</div>
+
+<dialog #appDialog>
+
+    <div class="container1">
+        @for(item of selectedPoke; track item ){
+        <div class="cardPokeMon1">
+            <h1>{{item.name}}</h1>
+
+
+            @for(stat of item.stats; track stat ){
+            <p>{{stat.stat.name}}: {{stat.base_stat}}</p>
+            }
+            @for(type of item.types; track type ){
+            <p>{{type.type.name}}</p>
+            }
+            <img src="{{item.sprites.other.dream_world.front_default}}" />
+
+            <button (click)="closeDialog()">Close</button>
+
+        </div>
+        }
+    </div>
+
+
+</dialog>
